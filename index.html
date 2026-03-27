@@ -607,14 +607,107 @@ nav {
   line-height: 1.5;
 }
 
-/* ── FOOTER ── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 32px 40px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
+/* ── ACCORDION ── */
+.accordion { margin-top: 32px; }
+.acc-part { margin-bottom: 24px; }
+.acc-part-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--red-brt);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-left: 4px;
 }
+.acc-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.acc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  user-select: none;
+}
+.acc-header:hover { background: #1e1010; }
+.acc-header-title {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  color: var(--white);
+  font-weight: 700;
+}
+.acc-arrow {
+  color: var(--gold);
+  font-size: 12px;
+  transition: transform 0.2s;
+  font-family: 'Share Tech Mono', monospace;
+}
+.acc-item.open .acc-arrow { transform: rotate(180deg); }
+.acc-body {
+  display: none;
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--border);
+}
+.acc-item.open .acc-body { display: block; }
+.acc-body p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--lgray);
+  margin-bottom: 14px;
+}
+.acc-body p:last-child { margin-bottom: 0; }
+.acc-rule {
+  background: #1a0000;
+  border-left: 4px solid var(--red-brt);
+  padding: 12px 16px;
+  margin: 14px 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--red-brt);
+  font-family: 'Cinzel', serif;
+  letter-spacing: 1px;
+}
+.acc-callout {
+  background: var(--dark);
+  border-left: 4px solid var(--gold);
+  padding: 12px 16px;
+  margin: 14px 0;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+}
+.acc-list { margin: 10px 0 14px 0; padding-left: 0; list-style: none; }
+.acc-list li {
+  font-size: 14px;
+  color: var(--lgray);
+  padding: 5px 0 5px 20px;
+  position: relative;
+  line-height: 1.7;
+}
+.acc-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--red-brt);
+  font-weight: 700;
+}
+.acc-num { color: var(--gold); font-weight: 700; margin-right: 6px; }
+.tier-table { width:100%; border-collapse:collapse; margin:14px 0; font-size:12px; }
+.tier-table th { background:var(--dark); color:var(--gold); padding:8px 10px; text-align:left; border:1px solid var(--border); font-family:'Share Tech Mono',monospace; letter-spacing:1px; font-size:10px; }
+.tier-table td { padding:8px 10px; border:1px solid rgba(139,0,0,0.2); color:var(--lgray); }
+.tier-table tr:nth-child(even) td { background:#161616; }
+.tier-s { color:#CC2200; font-weight:700; }
+.tier-a { color:#C8A84B; font-weight:700; }
+.tier-b { color:#CCCCCC; font-weight:700; }
+.tier-c { color:#888; font-weight:700; }
 
 footer .footer-logo {
   font-family: 'Cinzel', serif;
@@ -912,25 +1005,436 @@ footer .footer-copy {
   <div class="section">
     <div class="section-eyebrow">Offensive-First Doctrine</div>
     <div class="section-title">Hannibal's Guide to Strategic Rushing</div>
-    <p class="section-body">The definitive Boom Beach rushing guide. From HQ1 to Global Leaderboard — covering every system, every stage, and every decision you need to make to dominate the game.</p>
+    <p class="section-body">The definitive Boom Beach rushing guide. From HQ1 to Global Leaderboard — covering every system, every stage, and every decision you need to dominate the game. Click any chapter to expand.</p>
 
-    <div class="guide-banner">
-      <div>
-        <div class="guide-banner-title">Hannibal's Guide to Strategic Rushing in Boom Beach</div>
-        <div class="guide-banner-sub">20 chapters. Full HQ roadmap. Statue doctrine. VP push strategy. Warships. Operations. Endgame preparation. The complete doctrine — free.</div>
+    <div class="accordion">
+
+      <!-- PART I -->
+      <div class="acc-part">
+        <div class="acc-part-title">Part I — Philosophy</div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 1: What Strategic Rushing Actually Is</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Most players misunderstand rushing. They hear the word and picture someone recklessly skipping upgrades, fielding underpowered troops, and getting crushed on defense. That is not what this guide teaches. Strategic rushing is the deliberate, calculated prioritization of progression systems that compound over time — with offense at the top and defense dead last.</p>
+            <p>This guide applies the core doctrine of offensive-first progression to Boom Beach's unique mechanics — with full coverage from HQ1 through HQ30 and every competitive system in between.</p>
+            <div class="acc-callout">Strategic rushing is not reckless. It is the most efficient path to long-term dominance. Every decision is deliberate.</div>
+            <p><strong style="color:var(--gold)">The Three Types of Players:</strong></p>
+            <ul class="acc-list">
+              <li><strong style="color:var(--white)">The Maxer</strong> — upgrades everything at each HQ level before advancing. Feels safe. Falls irreversibly behind. Never reaches endgame systems.</li>
+              <li><strong style="color:var(--white)">The Bad Rusher</strong> — jumps HQ levels with no plan, skips critical thresholds, fields weak troops, and stagnates.</li>
+              <li><strong style="color:var(--white)">The Strategic Rusher</strong> — advances HQ as the top priority, hits key offensive thresholds, and defers defense entirely. This is the correct path.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 2: Why Rushing Works in Boom Beach</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p><strong style="color:var(--gold)">Offense Scales. Defense Delays.</strong></p>
+            <p>Offensive upgrades — troop levels, Landing Craft capacity, Gunboat energy, hero abilities — create direct, compounding advantages. Every offensive upgrade compounds into faster progression. Defensive upgrades delay attackers by seconds, not minutes. They do not prevent losses.</p>
+            <div class="acc-rule">Defense is a time tax, not a win condition. Stop paying it early.</div>
+            <p><strong style="color:var(--gold)">The Unlock Threshold Principle</strong></p>
+            <p>Every major system in Boom Beach is gated behind HQ level thresholds. The Sculptor unlocks at HQ9. Heroes unlock progressively. Prototype Weapons require HQ22+. Every HQ level you delay reaching these systems costs compounding advantage. A player who reaches HQ25 six months before you has six months of statue production, Power Powder accumulation, and Warships seasons ahead.</p>
+            <div class="acc-callout">Boom Beach is a threshold game. The player who unlocks systems earliest wins the long game. Period.</div>
+            <p><strong style="color:var(--gold)">Economy is Map-Driven, Not Base-Driven</strong></p>
+            <p>In Boom Beach, your economy is your map. You raid bases, collect resources, and spend immediately. Your resource buildings are a temporary bank, not an income engine. The real economy lever is raiding efficiency — entirely determined by offensive power.</p>
+            <div class="acc-rule">Your map is your bank. Your troops are your income. Upgrade accordingly.</div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 3: The Six Core Rules</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Everything in this guide flows from six foundational rules. Memorize them. When in doubt, return to them.</p>
+            <div class="acc-callout">RULE 1: If you can upgrade the HQ, upgrade the HQ. Always. No exceptions.</div>
+            <div class="acc-callout">RULE 2: Offense before economy. Economy before defense. Defense last — always last.</div>
+            <div class="acc-callout">RULE 3: The map is your bank. Raid, spend, repeat. Never hoard resources waiting for upgrades.</div>
+            <div class="acc-callout">RULE 4: Unlock systems early. Every day before reaching the Sculptor, heroes, or Prototypes is advantage lost.</div>
+            <div class="acc-callout">RULE 5: Statues are your force multipliers. Prioritize red masterpieces and GBE. Blues come last.</div>
+            <div class="acc-callout">RULE 6: Defense is irrelevant until you are pushing VP. Even then, it is secondary to offensive readiness.</div>
+          </div>
+        </div>
       </div>
-      <a class="btn-primary" href="#">Read the Guide</a>
+
+      <!-- PART II -->
+      <div class="acc-part">
+        <div class="acc-part-title">Part II — Mechanics</div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 4: The Upgrade Priority Framework</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>This framework governs every upgrade decision from HQ1 through HQ30. It is not a suggestion. It is doctrine.</p>
+            <ul class="acc-list">
+              <li><span class="acc-num">1.</span><strong style="color:var(--white)">HQ</strong> — Always first. If it can be upgraded, it gets upgraded.</li>
+              <li><span class="acc-num">2.</span><strong style="color:var(--white)">Sculptor / Armory / Radar</strong> — Sculptor enables statues. Armory enables better troops. Radar expands the map.</li>
+              <li><span class="acc-num">3.</span><strong style="color:var(--white)">Gunboat</strong> — Gunboat energy is the most impactful offensive resource in the game.</li>
+              <li><span class="acc-num">4.</span><strong style="color:var(--white)">Landing Crafts</strong> — More troops means more damage per attack.</li>
+              <li><span class="acc-num">5.</span><strong style="color:var(--white)">Support Buildings</strong> — Vault, Submarine, HQ support structures.</li>
+              <li><span class="acc-num">6.</span><strong style="color:var(--white)">Economy Buildings</strong> — Only after offense is addressed.</li>
+              <li><span class="acc-num">7.</span><strong style="color:var(--white)">Defense</strong> — Last. Always last. No debate.</li>
+            </ul>
+            <div class="acc-callout">If two upgrades are available and one is offensive and one is defensive, upgrade offense. Every time. No debate.</div>
+            <table class="tier-table">
+              <thead><tr><th>Tier</th><th>Upgrade</th><th>Reason</th></tr></thead>
+              <tbody>
+                <tr><td class="tier-s">S-TIER</td><td>HQ Upgrade</td><td>Unlocks buildings, systems, troop levels — highest leverage action in the game</td></tr>
+                <tr><td class="tier-s">S-TIER</td><td>Sculptor</td><td>Every level = new statue slot = compounding permanent bonuses</td></tr>
+                <tr><td class="tier-s">S-TIER</td><td>Armory</td><td>Gates every troop upgrade. Nothing is more offensive than stronger troops</td></tr>
+                <tr><td class="tier-s">S-TIER</td><td>Gunboat</td><td>Every energy point directly improves attack capability</td></tr>
+                <tr><td class="tier-a">A-TIER</td><td>Landing Crafts</td><td>More capacity = more troops = more damage</td></tr>
+                <tr><td class="tier-a">A-TIER</td><td>Radar</td><td>Expands the map = more raids = more resources</td></tr>
+                <tr><td class="tier-a">A-TIER</td><td>Hero Huts</td><td>Heroes are game-changers. Unlock and level immediately</td></tr>
+                <tr><td class="tier-a">A-TIER</td><td>Submarine</td><td>Gunboat energy recovery accelerates raiding cycles</td></tr>
+                <tr><td class="tier-b">B-TIER</td><td>Resource Buildings</td><td>Upgrade when no offensive upgrades are available</td></tr>
+                <tr><td class="tier-b">B-TIER</td><td>Vault</td><td>Relevant once you accumulate significant resources</td></tr>
+                <tr><td class="tier-c">C-TIER</td><td>Defensive Buildings</td><td>Delay attackers. Do not prevent losses. Upgrade last</td></tr>
+                <tr><td class="tier-c">C-TIER</td><td>Mines / Boom Mines</td><td>Lowest leverage in the game. Final priority always</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 5: The Statue System</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Statues are the most powerful permanent progression system in Boom Beach. A well-built statue setup provides 50-100%+ damage bonuses, massively increased Gunboat energy, and at endgame — Power Powder accumulation that enables VP pushes.</p>
+            <div class="acc-callout">Red statues first. Always. Blues are an endgame luxury, not an early priority.</div>
+            <p><strong style="color:var(--gold)">Statue Types That Matter:</strong></p>
+            <ul class="acc-list">
+              <li><strong style="color:var(--white)">Troop Damage (TD)</strong> — The single most impactful offensive bonus in the game.</li>
+              <li><strong style="color:var(--white)">Troop Health (TH)</strong> — Enables attacks on significantly harder bases.</li>
+              <li><strong style="color:var(--white)">Gunboat Energy (GBE)</strong> — More GBE = more flexible, more powerful attacks.</li>
+              <li><strong style="color:var(--white)">Resource Reward (RR)</strong> — High value during active farming phases.</li>
+              <li><strong style="color:var(--white)">Power Stone Chance (PSC)</strong> — Essential at endgame for Power Powder accumulation.</li>
+              <li><strong style="color:var(--white)">Blue Statues</strong> — Endgame only. Do not sacrifice reds prematurely.</li>
+            </ul>
+            <p><strong style="color:var(--gold)">Masterpiece Priority Order:</strong></p>
+            <ul class="acc-list">
+              <li><span class="acc-num">1.</span> Troop Damage Masterpiece — First. Always.</li>
+              <li><span class="acc-num">2.</span> Troop Health Masterpiece — Second.</li>
+              <li><span class="acc-num">3.</span> GBE Masterpiece — Third.</li>
+              <li><span class="acc-num">4.</span> RR Masterpiece — Fourth.</li>
+              <li><span class="acc-num">5.</span> Additional TD/TH statues to fill remaining slots.</li>
+              <li><span class="acc-num">6.</span> PSC statues once masterpieces are complete.</li>
+              <li><span class="acc-num">7.</span> Blue statues only when actively pushing VP.</li>
+            </ul>
+            <div class="acc-rule">Two red masterpieces minimum before you consider anything else. No exceptions.</div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 6: The Hero System</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Heroes are among the most powerful force multipliers in the game. Level all heroes consistently using Hero Tokens — do not sit on tokens.</p>
+            <ul class="acc-list">
+              <li><strong style="color:var(--white)">Sergeant Brick</strong> — Taunt ability. First hero. Level consistently.</li>
+              <li><strong style="color:var(--white)">Dr. Kavan</strong> — Healing ability. Enables sustained attacks on heavily defended bases.</li>
+              <li><strong style="color:var(--white)">Cpt. Everspark</strong> — Critter ability. One of the most powerful attack strategies in the game.</li>
+              <li><strong style="color:var(--white)">Paolo Cannava</strong> — Resource and statue fragment bonuses. Strong economic support.</li>
+              <li><strong style="color:var(--white)">Pvt. Bullit</strong> — Damage-focused. Strong for pure offensive pushes.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART III -->
+      <div class="acc-part">
+        <div class="acc-part-title">Part III — The HQ Roadmap</div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 7: Early Game — HQ 1 through 10</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>The early game has one objective: reach HQ9 and build the Sculptor as fast as possible.</p>
+            <div class="acc-rule">HQ9 = Sculptor. Getting here fast is the single most important early game objective.</div>
+            <p><strong style="color:var(--gold)">HQ 1-5: Foundation</strong></p>
+            <ul class="acc-list">
+              <li>Upgrade HQ immediately whenever resources allow.</li>
+              <li>Upgrade Landing Crafts to increase troop capacity.</li>
+              <li>Upgrade Armory to unlock higher troop levels.</li>
+              <li>Clear every NPC base on your map as soon as available.</li>
+              <li>Spend resources immediately. Do not hoard. Ever.</li>
+            </ul>
+            <p><strong style="color:var(--gold)">HQ 6-9: The Race to the Sculptor</strong></p>
+            <ul class="acc-list">
+              <li>HQ upgrades above everything else.</li>
+              <li>Gunboat upgrades whenever possible.</li>
+              <li>The moment you hit HQ9 — build the Sculptor immediately.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 8: Early-Mid Game — HQ 11 through 16</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>This phase establishes your statue foundation, unlocks your first heroes, and dramatically increases raiding efficiency.</p>
+            <ul class="acc-list">
+              <li>Build your Troop Damage Masterpiece — first statue priority, no debate.</li>
+              <li>Level Sculptor consistently to unlock additional statue slots.</li>
+              <li>Unlock Sergeant Brick and begin leveling immediately.</li>
+              <li>Upgrade Landing Crafts aggressively — troop capacity is offense.</li>
+              <li>Push Armory to keep troop levels current with your HQ level.</li>
+              <li>Expand Radar to access more raids and more resources.</li>
+            </ul>
+            <div class="acc-callout">By HQ16, your TD Masterpiece should be complete and TH Masterpiece in progress. If not, you are behind the optimal path.</div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 9: Mid Game — HQ 17 through 20</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Mid game is where strategic rushers visibly separate from maxers. Hero synergies unlock, statue bonuses compound visibly, and attack strategy depth expands significantly.</p>
+            <ul class="acc-list">
+              <li>Complete TH Masterpiece.</li>
+              <li>Begin GBE Masterpiece — Gunboat energy increasingly determines attack ceiling.</li>
+              <li>Unlock and level Dr. Kavan and Cpt. Everspark.</li>
+              <li>Learn critter attack strategy — one of the most powerful archetypes in the game.</li>
+              <li>Expand attack repertoire: Grenadiers, Tanks + Medics, Zookas.</li>
+              <li>RR statues fill open slots to accelerate the raiding economy.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 10: Late Game — HQ 21 through 24</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Prototype Weapons unlock at HQ22. VP pushing becomes viable. Power Powder begins to accumulate.</p>
+            <ul class="acc-list">
+              <li>HQ22: Build the Weapon Lab immediately. Prototype Weapons are game-changing.</li>
+              <li>Complete GBE Masterpiece.</li>
+              <li>Build RR Masterpiece to accelerate resource accumulation.</li>
+              <li>Begin accumulating Prototype Parts — target 2,000 of each type.</li>
+              <li>Begin Power Powder accumulation — target 10,000 PP before your first VP push.</li>
+              <li>Establish Task Force operations rhythm.</li>
+              <li>Unlock and level all available heroes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 11: Endgame — HQ 25 through 28</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>The game shifts from progression to optimization. Focus moves to Power Powder accumulation, statue refinement, and VP push preparation.</p>
+            <ul class="acc-list">
+              <li>Sculptor at maximum level — every slot filled with high-quality statues.</li>
+              <li>Transition toward PSC statues for Power Powder acceleration.</li>
+              <li>75% PSC statue setup is the optimal long-term PP acceleration configuration.</li>
+              <li>Target 10,000 Power Powder before executing a VP push window.</li>
+              <li>Defense upgrades become relevant — for base value in VP calculation, not defense.</li>
+              <li>Engraving Building operational for permanent Prototype Weapon bonuses.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 12: Max/Near-Max — HQ 29 through 30</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Every system is unlocked. The entire focus is on VP leaderboard positioning, Warships ranking, and Power Powder management for push windows.</p>
+            <ul class="acc-list">
+              <li>All Armory upgrades complete — troops at maximum level.</li>
+              <li>All heroes at maximum available level.</li>
+              <li>Statue setup optimized — PSC for accumulation, blue-shifted for active VP push.</li>
+              <li>Power Powder reserve: 10,000 minimum before executing a push.</li>
+              <li>Prototype Parts: 2,000+ of each type for sustained cycling.</li>
+              <li>Defense optimized for base value — the only point where defense is a legitimate priority.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART IV -->
+      <div class="acc-part">
+        <div class="acc-part-title">Part IV — Advanced Systems</div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 13: Resource Strategy — The Raid-Spend Cycle</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-rule">If your Vault is full, you are playing wrong. Resources should be spent, not stored.</div>
+            <p><strong style="color:var(--gold)">The Correct Cycle:</strong></p>
+            <ul class="acc-list">
+              <li><span class="acc-num">1.</span> Log in. Identify the next upgrade in the priority order.</li>
+              <li><span class="acc-num">2.</span> Determine how many resources you need.</li>
+              <li><span class="acc-num">3.</span> Raid until you have enough.</li>
+              <li><span class="acc-num">4.</span> Spend immediately.</li>
+              <li><span class="acc-num">5.</span> Queue the next upgrade. Repeat.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 14: VP Leaderboard Strategy</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>VP pushing is not a continuous activity — it is a planned, time-bounded operation executed when you have the resources to sustain it.</p>
+            <div class="acc-callout">Plan your push like a military operation. Defined objective. Defined window. Full resource commitment. Then withdraw and rearm.</div>
+            <ul class="acc-list">
+              <li>Accumulate 10,000 Power Powder minimum before beginning a push.</li>
+              <li>Activate Prototypes before the push window begins.</li>
+              <li>Execute a focused, high-intensity push over a defined time period.</li>
+              <li>After the window, stop. Let Power Powder rebuild and bases cycle.</li>
+              <li>A short, optimized push beats a long, grinding push every single time.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 15: Warships</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Warships is Boom Beach's competitive PvP mode. Performance depends almost entirely on attack strategy mastery and ability to adapt to the current meta.</p>
+            <ul class="acc-list">
+              <li>Win rate matters more than total attacks. Quality over quantity.</li>
+              <li>Master at least three distinct attack strategies.</li>
+              <li>Track the current season's meta — optimal strategies shift with updates.</li>
+              <li>Hero ability timing is the highest skill expression in Warships. Master it.</li>
+              <li>Early-Mid (HQ 1-16): Grenadiers and Warriors.</li>
+              <li>Mid Game (HQ 17-20): Add Zookas and Tank/Medic. Critter attacks open.</li>
+              <li>Late/Endgame (HQ 21+): Full arsenal. Adaptability is the differentiator.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 16: Operations — Task Force Play</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Active ops participation is not optional in a serious TF — it is the baseline expectation.</p>
+            <ul class="acc-list">
+              <li>Always have intel. If you are not generating intel, you are not contributing.</li>
+              <li>Attack assigned targets — do not deviate without TF coordination.</li>
+              <li>Higher-level operations require coordinated attack order. Follow leadership.</li>
+              <li>Push your TF toward harder operations as collective power grows.</li>
+              <li>Intel generation rate is the primary metric for evaluating player contribution.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 17: Mega Crab</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Mega Crab is one of the best sources of statue fragments in the game. Treat every Mega Crab as a mandatory high-priority session.</p>
+            <ul class="acc-list">
+              <li>Attack every available Mega Crab base you can reach during the event window.</li>
+              <li>Prioritize high-tier crab bases for maximum statue fragment rewards.</li>
+              <li>Coordinate with your TF for maximum efficiency.</li>
+              <li>Activate Power Powder if a push window aligns with Mega Crab.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 18: Multi-Account Strategy</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p>Running multiple accounts creates compounding advantages when executed correctly. Primary benefits are intel generation, resource supplementation, and TF roster depth.</p>
+            <ul class="acc-list">
+              <li>Every account follows the same strategic rushing doctrine — no exceptions.</li>
+              <li>One anchor account per TF at a level capable of running serious operations.</li>
+              <li>Track progression, intel output, and ops participation across all accounts.</li>
+              <li>Players move within the system as they grow — leadership structure remains stable.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART V -->
+      <div class="acc-part">
+        <div class="acc-part-title">Part V — Endgame Preparation</div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 19: Push Readiness Criteria</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-callout">A push without preparation is a resource burn with no return. Never push unprepared.</div>
+            <p>Verify all of the following before executing a VP push:</p>
+            <ul class="acc-list">
+              <li>Power Powder reserve: 10,000 minimum.</li>
+              <li>Prototype Parts: 2,000+ of each type.</li>
+              <li>All troops at maximum level for current HQ.</li>
+              <li>All heroes at maximum available level.</li>
+              <li>Statue setup reviewed for push goals.</li>
+              <li>TF notified of push window for intel support.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-header-title">Chapter 20: Anti-Rushing Arguments — Addressed</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p><strong style="color:var(--gold)">"But you'll get raided constantly."</strong></p>
+            <p>You will get raided. It is irrelevant. Boom Beach's economy is map-driven. Resources in your base are temporary. Resources spent on upgrades are permanent. Getting raided is a minor inconvenience to an aggressive raider.</p>
+            <p><strong style="color:var(--gold)">"Your defense is too weak for your HQ level."</strong></p>
+            <p>Correct. And your offense is too weak because you spent resources on defense instead. Defense delays attackers by seconds. Offense enables you to raid harder bases, generate more resources, and progress faster.</p>
+            <p><strong style="color:var(--gold)">"You should max each HQ level first."</strong></p>
+            <p>The player who maxes HQ10 before advancing is 3-6 months behind the strategic rusher by HQ20. That gap never closes. Every endgame system favors the player who unlocked them earliest.</p>
+            <p><strong style="color:var(--gold)">"Rushing is only for pay-to-win players."</strong></p>
+            <p>False. Strategic rushing is the optimal path for free-to-play players because it maximizes the value of every resource. Spending on defense is the pay-to-lose mistake.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end accordion -->
+
+    <div style="text-align:center; margin-top:60px; padding:40px; border-top:1px solid var(--border);">
+      <div style="font-family:'Cinzel',serif; font-size:22px; color:var(--red-brt); font-weight:700; margin-bottom:8px;">RAID. DOMINATE. CONQUER.</div>
+      <div style="font-family:'Share Tech Mono',monospace; font-size:11px; color:var(--gray); letter-spacing:2px;">— HANNIBAL · The Syndicate Task Force System</div>
     </div>
 
-    <div style="margin-top:48px;">
-      <div class="section-eyebrow">What's Inside</div>
-      <div class="about-grid" style="margin-top:20px;">
-        <div class="about-card"><div class="about-card-title">Part I — Philosophy</div><p>Why rushing works. The three player types. The six core rules. The foundational doctrine every player needs before touching an upgrade.</p></div>
-        <div class="about-card"><div class="about-card-title">Part II — Mechanics</div><p>The S/A/B/C upgrade tier table. Complete statue doctrine. Hero priority system. The full upgrade framework from HQ1 to HQ30.</p></div>
-        <div class="about-card"><div class="about-card-title">Part III — HQ Roadmap</div><p>Stage-by-stage guidance for every HQ range. Exactly what to upgrade, when, and why. No guesswork.</p></div>
-        <div class="about-card"><div class="about-card-title">Part IV — Advanced Systems</div><p>VP push windows. Warships meta. Operations doctrine. Mega Crab. Multi-account strategy. Power Powder accumulation.</p></div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -1121,7 +1625,10 @@ function drawMatrix() {
 }
 
 setInterval(drawMatrix, 50);
-
+function toggleAcc(header) {
+  const item = header.parentElement;
+  item.classList.toggle('open');
+}
 function toggleMenu() {
   const menu = document.getElementById('mobile-menu');
   menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
